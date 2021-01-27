@@ -1,0 +1,14 @@
+To make a directory a repository:  go to directory and once in the directory type "git init"
+
+
+At command prompt in git type:   cd "C:\Users\dgarb\OneDrive\Documents\Data Science Bootcamp January\Project 1"
+
+C:\Users\dgarb\OneDrive\Documents\Data Science Bootcamp January\Project 1
+
+git push --set-upstream origin project_one
+
+from now on to commit changes go to repository in Git the above directory.
+
+git add .
+git commit -m "message"
+git push
