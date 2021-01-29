@@ -19,7 +19,8 @@ fluidPage(
         ),
         mainPanel(
             fluidRow(
-               column(12, plotOutput("tenure_tab_plot"))
+               column(12, plotOutput("tenure_tab_plot")),
+               column(12, plotOutput("TotalCharges_tab_plot"))
                 # column(6, plotOutput("delay"))
             )
         )
