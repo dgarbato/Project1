@@ -180,7 +180,17 @@ function(input, output) {
         
     }) # Close reactive
     
-    output$test <-renderTable(char_tab2('OnlineSecurity',input$gender,input$senior))
+    Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
+    })
+    
+    output$Online_security_tab_plot <- renderPlot({
+        ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col()    
+    })
+    
+    #function test
+    #output$test <-renderTable({
+     #   char_tab3('OnlineSecurity',input$gender,input$senior)})
+   
     #Plots
     ######
     
