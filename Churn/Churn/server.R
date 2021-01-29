@@ -181,11 +181,9 @@ function(input, output) {
     }) # Close reactive
     
     Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
-    })
+    }) # Close reactive
     
-    output$Online_security_tab_plot <- renderPlot({
-        ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col()    
-    })
+
     
     #function test
     #output$test <-renderTable({
@@ -211,6 +209,13 @@ function(input, output) {
     output$MonthlyCharges_tab_plot <- renderPlot({
         
         ggplot(data = MonthlyCharges_tab_reactive(), aes(x = factor(MonthlyCharges.decile),y=Index)) + geom_col()
+        
+    })# Close renderPlot
+    
+    # Next plot
+    output$Online_security_tab_plot <- renderPlot({
+        
+        ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col() 
         
     })# Close renderPlot
     
