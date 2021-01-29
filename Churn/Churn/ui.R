@@ -23,7 +23,8 @@ fluidPage(
                column(12, plotOutput("tenure_tab_plot")),
                column(12, plotOutput("TotalCharges_tab_plot")),
                column(12, plotOutput("MonthlyCharges_tab_plot")),
-               column(12, plotOutput("Online_security_tab_plot"))
+               column(12, plotOutput("Online_security_tab_plot")),
+               column(12, plotOutput("InternetService_tab_plot"))
                 # column(6, plotOutput("delay"))
             )
         )
