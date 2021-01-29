@@ -50,3 +50,15 @@ telco%>%
   summarise(min(TotalCharges), max(TotalCharges), Observations=n(),Churn_Rate=mean(Churn2),
             Index=round(mean(Churn2)/0.2653699 * 100),
   )-> TotalCharges_Tab
+
+
+char_tab2=function(var,gender,senior){
+  
+  if (gender == 'All' && senior == 'All'){
+    telco %>%
+      mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
+      group_by_at(var)%>%
+      summarise(Observations=n(), Churn_Rate=mean(Churn2),
+                Index=round(mean(Churn2)/0.2653699 * 100)
+      ) } else {NA}
+}
