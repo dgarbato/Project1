@@ -221,7 +221,7 @@ function(input, output) {
   output$tenure_tab_plot <- renderPlot({
     
     ggplot(data = tenure_tab_reactive(), aes(x = factor(tenure.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
-      ggtitle("Customer Tenure") +  xlab("Deciles") 
+      ggtitle("Customer Tenure") +  xlab("Deciles") + ylab("Index to Overall Churn Rate")
     
     
   }) # Close renderPlot
@@ -230,7 +230,7 @@ function(input, output) {
   output$TotalCharges_tab_plot <- renderPlot({
     
     ggplot(data = TotalCharges_tab_reactive(), aes(x = factor(TotalCharges.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
-      ggtitle("Total Charges") +  xlab("Deciles") 
+      ggtitle("Total Charges") +  xlab("Deciles") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -238,7 +238,7 @@ function(input, output) {
   output$MonthlyCharges_tab_plot <- renderPlot({
     
     ggplot(data = MonthlyCharges_tab_reactive(), aes(x = factor(MonthlyCharges.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
-      ggtitle("Monthly Charges") +  xlab("Deciles") 
+      ggtitle("Monthly Charges") +  xlab("Deciles") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -250,7 +250,7 @@ function(input, output) {
   output$Online_security_tab_plot <- renderPlot({
     
     ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col(fill='lightblue',color='black') +
-      ggtitle("Online security")
+      ggtitle("Online security") + xlab("") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -259,7 +259,8 @@ function(input, output) {
   output$InternetService_tab_plot <- renderPlot({
     
     ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") 
+      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate")
+    
     
     
   })# Close renderPlot
@@ -268,7 +269,7 @@ function(input, output) {
   output$OnlineBackup_tab_plot <- renderPlot({
     
     ggplot(data = OnlineBackup_tab_reactive(), aes(x = OnlineBackup,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Online Backup") 
+      ggtitle("Online Backup") + xlab("") + ylab("Index to Overall Churn Rate")
     
     
   })# Close renderPlot
