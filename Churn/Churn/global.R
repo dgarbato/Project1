@@ -1,4 +1,10 @@
 library(shiny)
+library(RColorBrewer)
+library(ggthemes)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
 
 telco=read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
 

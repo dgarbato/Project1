@@ -1,7 +1,9 @@
 #    http://shiny.rstudio.com/
 function(input, output) {
     
+    #############################
     #Numeric Variable Reactives
+    #############################
     
     tenure_tab_reactive <- reactive({
         
@@ -58,7 +60,7 @@ function(input, output) {
                 summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                           Index=round(mean(Churn2)/0.2653699 * 100)
                 )
-        } # Close else
+        } # Close else    
         
     }) # Close reactive
     
@@ -182,7 +184,9 @@ function(input, output) {
         
     }) # Close reactive
     
+    ##############################################################
     # Character Variable Reactives created with char_tab3 function
+    ##############################################################
     
     #next reactive
     Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
@@ -191,47 +195,79 @@ function(input, output) {
     #next reactive
     InternetService_tab_reactive <- reactive({char_tab3('InternetService',input$gender,input$senior)
     }) # Close reactive
+    
+    #next reactive
+    OnlineBackup_tab_reactive <- reactive({char_tab3('OnlineBackup',input$gender,input$senior)
+    }) # Close reactive    
 
     
     #function test
     #output$test <-renderTable({
      #   char_tab3('OnlineSecurity',input$gender,input$senior)})
    
-    #Plots
-    ######
+    
+    #############################
+    # Numeric Variable Plots
+    #############################
     
     output$tenure_tab_plot <- renderPlot({
         
-        ggplot(data = tenure_tab_reactive(), aes(x = factor(tenure.decile),y=Index)) + geom_col()
+        ggplot(data = tenure_tab_reactive(), aes(x = factor(tenure.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
+            ggtitle("Customer Tenure") +  xlab("Deciles") 
+           
         
     }) # Close renderPlot
     
     # Next plot
     output$TotalCharges_tab_plot <- renderPlot({
         
-        ggplot(data = TotalCharges_tab_reactive(), aes(x = factor(TotalCharges.decile),y=Index)) + geom_col()
+        ggplot(data = TotalCharges_tab_reactive(), aes(x = factor(TotalCharges.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
+            ggtitle("Total Charges") +  xlab("Deciles") 
         
     })# Close renderPlot
     
     # Next plot
     output$MonthlyCharges_tab_plot <- renderPlot({
         
-        ggplot(data = MonthlyCharges_tab_reactive(), aes(x = factor(MonthlyCharges.decile),y=Index)) + geom_col()
+        ggplot(data = MonthlyCharges_tab_reactive(), aes(x = factor(MonthlyCharges.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
+        ggtitle("Monthly Charges") +  xlab("Deciles") 
         
     })# Close renderPlot
+    
+    #############################
+    # Character Variable Plots
+    #############################
     
     # Next plot
     output$Online_security_tab_plot <- renderPlot({
         
-        ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col() 
+        ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col(fill='lightblue',color='black') +
+            ggtitle("Online security")
         
     })# Close renderPlot
     
     # Next plot
     output$InternetService_tab_plot <- renderPlot({
         
-        ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Index)) + geom_col() 
+        ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+        ggtitle("Internet Service") 
+        
         
     })# Close renderPlot
+    
+    # Next plot
+    output$OnlineBackup_tab_plot <- renderPlot({
+        
+        ggplot(data = OnlineBackup_tab_reactive(), aes(x = OnlineBackup,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+            ggtitle("Internet Service") 
+        
+        
+    })# Close renderPlot
+    
+    
+    
+    
+    
+    
     
 } # Close function
