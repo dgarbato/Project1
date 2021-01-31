@@ -9,6 +9,8 @@ I then created a graphs for  character variables to see which categories impacte
 
 The app I created is in the  Churn2 folder of my Project1 repository on github.
 
+Users can interact with this graph by seeing how things change by gender.  I hope to add to that functionality.
+
 That link is https://github.com/dgarbato/Project1
 
 My app can be viewed on  https://deniseg.shinyapps.io/Churn2/
