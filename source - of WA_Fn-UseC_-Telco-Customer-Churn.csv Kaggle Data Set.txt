@@ -1,4 +1,0 @@
-https://www.kaggle.com/blastchar/telco-customer-churn?select=WA_Fn-UseC_-Telco-Customer-Churn.csv
-Source of file
-
-student services officer
