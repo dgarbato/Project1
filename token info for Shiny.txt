@@ -1,0 +1,6 @@
+library(RColorBrewer)
+display.brewer.all()
+scale_fill_brewer(palette = "OrRd")  p 53
+
+
+rsconnect::setAccountInfo(name='deniseg',token='38D24C477E78E1A32411CF8EADC2628B', secret='<SECRET>')

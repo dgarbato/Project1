@@ -1,10 +1,12 @@
 #    http://shiny.rstudio.com/
 function(input, output) {
     
+
     #############################
     #Numeric Variable Reactives
     #############################
     
+
     tenure_tab_reactive <- reactive({
         
         if (input$gender == 'All' && input$senior == 'All'){
@@ -184,6 +186,7 @@ function(input, output) {
         
     }) # Close reactive
     
+           
     ##############################################################
     # Character Variable Reactives created with char_tab3 function
     ##############################################################
@@ -199,6 +202,11 @@ function(input, output) {
     #next reactive
     OnlineBackup_tab_reactive <- reactive({char_tab3('OnlineBackup',input$gender,input$senior)
     }) # Close reactive    
+
+    Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
+    }) # Close reactive
+    
+
 
     
     #function test
@@ -246,6 +254,7 @@ function(input, output) {
         
     })# Close renderPlot
     
+
     # Next plot
     output$InternetService_tab_plot <- renderPlot({
         
@@ -270,4 +279,5 @@ function(input, output) {
     
     
     
+
 } # Close function
