@@ -5,7 +5,6 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(readr)
-library(shinydashboard)
 
 telco=read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
 

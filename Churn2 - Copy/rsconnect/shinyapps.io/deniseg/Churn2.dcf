@@ -1,0 +1,12 @@
+name: Churn2
+title: Churn2
+username:
+account: deniseg
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3554177
+bundleId: 4163554
+url: https://deniseg.shinyapps.io/Churn2/
+when: 1612105406.18985
+asMultiple: FALSE
+asStatic: FALSE
