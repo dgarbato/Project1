@@ -7,10 +7,15 @@ library(tidyr)
 library(readr)
 library(shinydashboard)
 
-telco=read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
+telco2=read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
 
 telco2%>%
-  mutate(seniorcitz=ifelse(SeniorCitizen == 1,'Yes','No'))->telco
+  mutate(senior=ifelse(SeniorCitizen == 1,'Yes','No'))->telco
+
+
+
+
+
 
 
 #test function
@@ -39,7 +44,7 @@ char_tab3=function(var,sex,senior){
   else if (sex  == 'All' && senior != 'All'){
     telco %>%
       mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-      filter(seniorcitz == senior) %>% 
+      filter(SeniorCitizen == senior) %>% 
       group_by_at(var) %>%
       summarise(Observations=n(), Churn_Rate=mean(Churn2),Index=round(mean(Churn2)/0.2653699 * 100))
   }#close else if
@@ -53,7 +58,7 @@ char_tab3=function(var,sex,senior){
   else{
     telco %>%
       mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-      filter(gender == sex, seniorcitz == senior) %>% 
+      filter(gender == sex, SeniorCitizen == senior) %>% 
       group_by_at(var) %>%
       summarise(Observations=n(), Churn_Rate=mean(Churn2),Index=round(mean(Churn2)/0.2653699 * 100))
   }

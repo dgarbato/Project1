@@ -29,7 +29,7 @@ function(input, output) {
                                                     probs= seq(0, 1, by= 0.1)),
                                    include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-        filter(SeniorCitizen == input$senior) %>% 
+        filter(seniorcitz == input$senior) %>% 
         group_by(tenure.decile) %>%
         summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
@@ -57,7 +57,7 @@ function(input, output) {
                                                     probs= seq(0, 1, by= 0.1)),
                                    include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-        filter(gender == input$gender, SeniorCitizen == input$senior) %>% 
+        filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(tenure.decile) %>%
         summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
@@ -89,7 +89,7 @@ function(input, output) {
                                                           probs= seq(0, 1, by= 0.1,na.rm=TRUE),na.rm=TRUE),
                                          include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-        filter(SeniorCitizen == input$senior) %>% 
+        filter(seniorcitz == input$senior) %>% 
         group_by(TotalCharges.decile) %>%
         summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
@@ -117,7 +117,7 @@ function(input, output) {
                                                           probs= seq(0, 1, by= 0.1),na.rm=TRUE),
                                          include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-        filter(gender == input$gender, SeniorCitizen == input$senior) %>% 
+        filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(TotalCharges.decile) %>%
         summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
@@ -149,7 +149,7 @@ function(input, output) {
                                                             probs= seq(0, 1, by= 0.1,na.rm=TRUE),na.rm=TRUE),
                                            include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-        filter(SeniorCitizen == input$senior) %>% 
+        filter(seniorcitz == input$senior) %>% 
         group_by(MonthlyCharges.decile) %>%
         summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
@@ -177,7 +177,7 @@ function(input, output) {
                                                             probs= seq(0, 1, by= 0.1),na.rm=TRUE),
                                            include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-        filter(gender == input$gender, SeniorCitizen == input$senior) %>% 
+        filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(MonthlyCharges.decile) %>%
         summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
