@@ -9,7 +9,7 @@ library(shinydashboard)
 
 telco=read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
 
-telco2%>%
+telco%>%
   mutate(seniorcitz=ifelse(SeniorCitizen == 1,'Yes','No'))->telco
 
 
