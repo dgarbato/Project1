@@ -3,7 +3,7 @@ ui <- dashboardPage(
 "),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("menuitem1",tabName="Tab1"),
+      menuItem("menuitem1",tabName="Tab1"),  #will add filtered churn rate to box
       menuItem("menuitem2",tabName="Tab2"),
       menuItem("menuitem3",tabName="Tab3"),
       selectizeInput(inputId = "gender",
