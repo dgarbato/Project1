@@ -207,6 +207,31 @@ function(input, output) {
   }) # Close reactive
   
   
+  ##### REACTIVES ADDED 5/9/2021
+  
+  #next reactive
+  PaymentMethod_tab_reactive <- reactive({char_tab3('PaymentMethod',input$gender,input$senior)
+  }) # Close reactive
+  
+  #next reactive
+  Contract_tab_reactive <- reactive({char_tab3('Contract',input$gender,input$senior)
+  }) # Close reactive
+  
+  
+  #next reactive
+  MultipleLines_tab_reactive <- reactive({char_tab3('MultipleLines',input$gender,input$senior)
+  }) # Close reactive
+  
+  
+  #next reactive
+  PhoneService_tab_reactive <- reactive({char_tab3('PhoneService',input$gender,input$senior)
+  }) # Close reactive 
+  
+  
+  #next reactive
+  StreamingMovies_tab_reactive <- reactive({char_tab3('StreamingMovies',input$gender,input$senior)
+  }) # Close reactive 
+  
   
   
   #function test
@@ -274,10 +299,50 @@ function(input, output) {
     
   })# Close renderPlot
   
+#Next plot
+  output$PaymentMethod_tab_plot <- renderPlot({
+    
+    ggplot(data = PaymentMethod_tab_reactive(), aes(x = PaymentMethod,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("Payment Method") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
+  
+  
+  #Next plot
+  output$Contract_tab_plot <- renderPlot({
+    
+    ggplot(data = Contract_tab_reactive(), aes(x = Contract,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("Contract") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
+  
+  
+  #Next plot
+  output$MultipleLines_tab_plot <- renderPlot({
+    
+    ggplot(data = MultipleLines_tab_reactive(), aes(x = MultipleLines,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("Multiple Lines") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
   
   
   
+  #Next plot
+  output$PhoneService_tab_plot <- renderPlot({
+    
+    ggplot(data = PhoneService_tab_reactive(), aes(x = PhoneService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("PhoneService") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
   
+
+  #Next plot
+  output$StreamingMovies_tab_plot <- renderPlot({
+    
+    ggplot(data = StreamingMovies_tab_reactive(), aes(x = StreamingMovies,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("StreamingMovies") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
   
   
   
