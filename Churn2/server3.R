@@ -17,7 +17,7 @@ function(input, output) {
                                    include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close if
@@ -31,7 +31,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(seniorcitz == input$senior) %>% 
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -45,7 +45,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender) %>% 
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -59,7 +59,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=mean(Churn2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else    
@@ -77,7 +77,7 @@ function(input, output) {
                                          include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close if
@@ -91,7 +91,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(seniorcitz == input$senior) %>% 
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -105,7 +105,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender) %>% 
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE ), max(TotalCharges,na.rm=TRUE), Observations=n(),Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(TotalCharges,na.rm=TRUE ), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -119,7 +119,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else
@@ -137,7 +137,7 @@ function(input, output) {
                                            include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close if
@@ -151,7 +151,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(seniorcitz == input$senior) %>% 
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -165,7 +165,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender) %>% 
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE ), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(MonthlyCharges,na.rm=TRUE ), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -179,7 +179,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=mean(Churn2,na.rm=TRUE),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else
@@ -190,21 +190,21 @@ function(input, output) {
   ##############################################################
   # Character Variable Reactives created with char_tab3 function
   ##############################################################
-  # 
-  # #next reactive
-  # Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
-  # }) # Close reactive
+  
+  #next reactive
+  Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
+  }) # Close reactive
   
   #next reactive
   InternetService_tab_reactive <- reactive({char_tab3('InternetService',input$gender,input$senior)
   }) # Close reactive
   
-  # #next reactive
-  # OnlineBackup_tab_reactive <- reactive({char_tab3('OnlineBackup',input$gender,input$senior)
-  # }) # Close reactive    
-  # 
-  # Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
-  # }) # Close reactive
+  #next reactive
+  OnlineBackup_tab_reactive <- reactive({char_tab3('OnlineBackup',input$gender,input$senior)
+  }) # Close reactive    
+  
+  Online_security_tab_reactive <- reactive({char_tab3('OnlineSecurity',input$gender,input$senior)
+  }) # Close reactive
   
   
   ##### REACTIVES ADDED 5/9/2021
@@ -246,7 +246,7 @@ function(input, output) {
   output$tenure_tab_plot <- renderPlot({
     
     ggplot(data = tenure_tab_reactive(), aes(x = factor(tenure.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
-      ggtitle("Customer Tenure") +  xlab("Deciles") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Customer Tenure") +  xlab("Deciles") + ylab("Index to Overall Churn Rate")
     
     
   }) # Close renderPlot
@@ -255,7 +255,7 @@ function(input, output) {
   output$TotalCharges_tab_plot <- renderPlot({
     
     ggplot(data = TotalCharges_tab_reactive(), aes(x = factor(TotalCharges.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
-      ggtitle("Total Charges") +  xlab("Deciles") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Total Charges") +  xlab("Deciles") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -263,7 +263,7 @@ function(input, output) {
   output$MonthlyCharges_tab_plot <- renderPlot({
     
     ggplot(data = MonthlyCharges_tab_reactive(), aes(x = factor(MonthlyCharges.decile),y=Index)) + geom_col(fill='lightblue',color='black') + 
-      ggtitle("Monthly Charges") +  xlab("Deciles") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Monthly Charges") +  xlab("Deciles") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -272,38 +272,38 @@ function(input, output) {
   #############################
   
   # Next plot
-  # output$Online_security_tab_plot <- renderPlot({
-  #   
-  #   ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col(fill='lightblue',color='black') +
-  #     ggtitle("Online security") + xlab("") + ylab("Index to Overall Churn Rate")
-  #   
-  # })# Close renderPlot
-  # 
+  output$Online_security_tab_plot <- renderPlot({
+    
+    ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col(fill='lightblue',color='black') +
+      ggtitle("Online security") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
+  
   
   # Next plot
   output$InternetService_tab_plot <- renderPlot({
     
     ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate")
     
     
     
   })# Close renderPlot
   
   # Next plot
-  # output$OnlineBackup_tab_plot <- renderPlot({
-  #   
-  #   ggplot(data = OnlineBackup_tab_reactive(), aes(x = OnlineBackup,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-  #     ggtitle("Online Backup") + xlab("") + ylab("Index to Overall Churn Rate")
+  output$OnlineBackup_tab_plot <- renderPlot({
+    
+    ggplot(data = OnlineBackup_tab_reactive(), aes(x = OnlineBackup,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("Online Backup") + xlab("") + ylab("Index to Overall Churn Rate")
     
     
-  # })# Close renderPlot
+  })# Close renderPlot
   
 #Next plot
   output$PaymentMethod_tab_plot <- renderPlot({
     
     ggplot(data = PaymentMethod_tab_reactive(), aes(x = PaymentMethod,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Payment Method") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Payment Method") + xlab("") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -312,7 +312,7 @@ function(input, output) {
   output$Contract_tab_plot <- renderPlot({
     
     ggplot(data = Contract_tab_reactive(), aes(x = Contract,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Contract") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Contract") + xlab("") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -321,7 +321,7 @@ function(input, output) {
   output$MultipleLines_tab_plot <- renderPlot({
     
     ggplot(data = MultipleLines_tab_reactive(), aes(x = MultipleLines,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Multiple Lines") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Multiple Lines") + xlab("") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
@@ -331,18 +331,18 @@ function(input, output) {
   output$PhoneService_tab_plot <- renderPlot({
     
     ggplot(data = PhoneService_tab_reactive(), aes(x = PhoneService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("PhoneService") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("PhoneService") + xlab("") + ylab("Index to Overall Churn Rate")
     
   })# Close renderPlot
   
 
   #Next plot
-  # output$StreamingMovies_tab_plot <- renderPlot({
-  #   
-  #   ggplot(data = StreamingMovies_tab_reactive(), aes(x = StreamingMovies,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-  #     ggtitle("StreamingMovies") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+  output$StreamingMovies_tab_plot <- renderPlot({
     
-  # })# Close renderPlot
+    ggplot(data = StreamingMovies_tab_reactive(), aes(x = StreamingMovies,y=Index)) + geom_col(fill='lightblue',color='black')  + 
+      ggtitle("StreamingMovies") + xlab("") + ylab("Index to Overall Churn Rate")
+    
+  })# Close renderPlot
   
   
   

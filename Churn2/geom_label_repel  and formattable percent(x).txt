@@ -1,0 +1,15 @@
+geom_label_repel
+
+formattable::percent(x)                                      # percent function of formattable
+# 120.00% 50.00%  10.30%  700.00% 15.01%
+
+https://shiny.rstudio.com/reference/shiny/1.6.0/textOutput.html
+
+
+1-800-426-4584 aETNA MOM 
+
+CASE MANAGER
+1-866-251-2377
+JONATHAN FRYE
+
+SUCESSFULLY REFUSED
