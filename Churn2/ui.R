@@ -20,22 +20,37 @@ ui <- dashboardPage(
       tabItem(tabName="Tab1",
               
               fluidRow(box(
-                plotOutput("tenure_tab_plot"),width=8,)),
+                plotOutput("tenure_tab_plot"),width=6,),
+                box(tableOutput("table_tenure"),width=6)
+                ),
               
               fluidRow(box(
-                plotOutput("MonthlyCharges_tab_plot"),width=8)),
+                plotOutput("MonthlyCharges_tab_plot"),width=6),
+                box(tableOutput("table_MonthlyCharges"),width=6)
+                ),
               
-              fluidRow(box(plotOutput("TotalCharges_tab_plot"),width=8))
+              fluidRow(box(plotOutput("TotalCharges_tab_plot"),width=6),
+                       box(tableOutput("table_TotalCharges"),width=6)
+                       
+                       )
               ),
       tabItem(tabName="Tab2",
-              fluidRow(box(plotOutput("InternetService_tab_plot"),width=8)),
-              fluidRow(box(plotOutput("PaymentMethod_tab_plot"),width=8)),
-              fluidRow(box(plotOutput("Contract_tab_plot"),width=8))
+              fluidRow(box(plotOutput("InternetService_tab_plot"),width=6)
+                       
+                       ),
+              fluidRow(box(plotOutput("PaymentMethod_tab_plot"),width=6)
+                       
+                       ),
+              fluidRow(box(plotOutput("Contract_tab_plot"),width=6),
+                       
+                       )
               ),
       tabItem(tabName="Tab3",
-              fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=8,)),
-              fluidRow(box(plotOutput("PhoneService_tab_plot"),width=8)),
-              fluidRow(box(plotOutput("StreamingMovies_tab_plot"),width=8))
+              fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=6,)
+                       
+                       ),
+              fluidRow(box(plotOutput("PhoneService_tab_plot"),width=6)
+                       )
               )
       
     ))

@@ -17,8 +17,8 @@ function(input, output) {
                                    include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
-                  Index=round(mean(Churn2)/0.2653699 * 100)
+        summarise(Minimum=min(tenure), Maximum=max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+                  Index=round(mean(Churn2)/0.2653699 * 100,0)
         )
     } # Close if
     
@@ -31,8 +31,8 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(seniorcitz == input$senior) %>% 
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
-                  Index=round(mean(Churn2)/0.2653699 * 100)
+        summarise(Minimum=min(tenure), Maximum=max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+                  Index=round(mean(Churn2)/0.2653699 * 100,0)
         )
     } # Close else if
     
@@ -45,8 +45,8 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender) %>% 
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
-                  Index=round(mean(Churn2)/0.2653699 * 100)
+        summarise(Minimum=min(tenure), Maximum=max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+                  Index=round(mean(Churn2)/0.2653699 * 100,0)
         )
     } # Close else if
     
@@ -59,8 +59,8 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(tenure.decile) %>%
-        summarise(min(tenure), max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
-                  Index=round(mean(Churn2)/0.2653699 * 100)
+        summarise(Minimum=min(tenure), Maximum=max(tenure), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+                  Index=round(mean(Churn2)/0.2653699 * 100,0)
         )
     } # Close else    
     
@@ -77,7 +77,7 @@ function(input, output) {
                                          include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(TotalCharges,na.rm=TRUE), Maximum=max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close if
@@ -91,7 +91,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(seniorcitz == input$senior) %>% 
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(TotalCharges), Maximum=max(TotalCharges), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -105,7 +105,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender) %>% 
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE ), max(TotalCharges,na.rm=TRUE), Observations=n(),Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(TotalCharges,na.rm=TRUE ), Maximum=max(TotalCharges,na.rm=TRUE), Observations=n(),Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -119,7 +119,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(TotalCharges.decile) %>%
-        summarise(min(TotalCharges,na.rm=TRUE), max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(TotalCharges,na.rm=TRUE), Maximum=max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else
@@ -137,7 +137,7 @@ function(input, output) {
                                            include.lowest= TRUE, labels= c(1:10))) %>%
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(MonthlyCharges,na.rm=TRUE), Maximum=max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close if
@@ -151,7 +151,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(seniorcitz == input$senior) %>% 
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(MonthlyCharges,na.rm=TRUE), Maximum=max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -165,7 +165,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender) %>% 
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE ), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(MonthlyCharges,na.rm=TRUE ), Maximum=max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else if
@@ -179,7 +179,7 @@ function(input, output) {
         mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
         filter(gender == input$gender, seniorcitz == input$senior) %>% 
         group_by(MonthlyCharges.decile) %>%
-        summarise(min(MonthlyCharges,na.rm=TRUE), max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
+        summarise(Minimum=min(MonthlyCharges,na.rm=TRUE), Maximum=max(MonthlyCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
         )
     } # Close else
@@ -344,6 +344,36 @@ function(input, output) {
     
   # })# Close renderPlot
   
+  ############################ TABLES ######################################################################################
+  #Numeric variable tables
   
+  #Next table
+  output$table_tenure <- renderTable(tenure_tab_reactive()  )
+  
+  #Next table
+  output$table_TotalCharges <-renderTable(TotalCharges_tab_reactive())
+  
+  #Next table
+  output$table_MonthlyCharges <-renderTable(MonthlyCharges_tab_reactive())
+  
+  
+  #character variable tables
+  
+  # # #Next table
+  #  output$table_InternetService <-  renderTable(InternetService_tab_reactive())
+  # # 
+  # #Next table
+  # output$table_PaymentMethod <- renderTable(PaymentMethod_tab_reactive())
+  # 
+  # #Next table
+  # output$table_Contract <- renderTable(Contract_tab_reactive())
+  # 
+  # #Next table
+  # output$table_MultipleLines <- renderTable(MultipleLines_tab_reactive())
+  # 
+  # #Next table
+  # output$table_PhoneService <-  renderTable(PhoneService_tab_reactive())
+
+
   
 } # Close function
