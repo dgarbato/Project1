@@ -275,7 +275,7 @@ function(input, output) {
   # output$Online_security_tab_plot <- renderPlot({
   #   
   #   ggplot(data = Online_security_tab_reactive(), aes(x = OnlineSecurity,y=Index)) + geom_col(fill='lightblue',color='black') +
-  #     ggtitle("Online security") + xlab("") + ylab("Index to Overall Churn Rate")
+  #     ggtitle("Online security") + xlab("") + ylab("Index to Overall Churn Rate") + coord_flip()
   #   
   # })# Close renderPlot
   # 
@@ -284,7 +284,7 @@ function(input, output) {
   output$InternetService_tab_plot <- renderPlot({
     
     ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
+      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black') + coord_flip()
     
     
     

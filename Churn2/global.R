@@ -16,7 +16,7 @@ telco%>%
 
 #test function
 # char_tab2=function(var,gender,senior){
-#   
+#
 #   if (gender == 'All' && senior == 'All'){
 #     telco %>%
 #       mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
@@ -27,6 +27,41 @@ telco%>%
 # }
 
 #function used
+char_tab3=function(var,sex,senior){
+
+  if (sex == 'All' && senior == 'All'){
+    telco %>%
+      mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
+      group_by_at(var)%>%
+      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),
+                Index=round(mean(Churn2)/0.2653699 * 100)
+      ) }#close if
+
+  else if (sex  == 'All' && senior != 'All'){
+    telco %>%
+      mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
+      filter(seniorcitz == senior) %>%
+      group_by_at(var) %>%
+      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))
+  }#close else if
+  else if (sex != 'All' && senior == 'All'){
+    telco %>%
+      mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
+      filter(gender == sex) %>%
+      group_by_at(var) %>%
+      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))
+  }#close else if
+  else{
+    telco %>%
+      mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
+      filter(gender == sex, seniorcitz == senior) %>%
+      group_by_at(var) %>%
+      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))
+  }
+}
+
+
+#THIS DIDN"T WORK"
 # char_tab3=function(var,sex,senior){
 #   
 #   if (sex == 'All' && senior == 'All'){
@@ -34,7 +69,8 @@ telco%>%
 #       mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
 #       group_by_at(var)%>%
 #       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),
-#                 Index=round(mean(Churn2)/0.2653699 * 100)
+#                 Index=round(mean(Churn2)/0.2653699 * 100)%>%
+#       arrange(desc(Index))
 #       ) }#close if
 #   
 #   else if (sex  == 'All' && senior != 'All'){
@@ -42,59 +78,24 @@ telco%>%
 #       mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
 #       filter(seniorcitz == senior) %>% 
 #       group_by_at(var) %>%
-#       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))
+#       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))%>%
+#       arrange(desc(Index))
 #   }#close else if
 #   else if (sex != 'All' && senior == 'All'){
 #     telco %>%
 #       mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
 #       filter(gender == sex) %>% 
 #       group_by_at(var) %>%
-#       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))
+#       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))%>%
+#       arrange(desc(Index))
 #   }#close else if
 #   else{
 #     telco %>%
 #       mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
 #       filter(gender == sex, seniorcitz == senior) %>% 
 #       group_by_at(var) %>%
-#       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))
+#       summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))%>%
+#       arrange(desc(Index))
 #   }
 # }
-
-
-char_tab3=function(var,sex,senior){
-  
-  if (sex == 'All' && senior == 'All'){
-    telco %>%
-      mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
-      group_by_at(var)%>%
-      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),
-                Index=round(mean(Churn2)/0.2653699 * 100)%>%
-      arrange(desc(Index))
-      ) }#close if
-  
-  else if (sex  == 'All' && senior != 'All'){
-    telco %>%
-      mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-      filter(seniorcitz == senior) %>% 
-      group_by_at(var) %>%
-      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))%>%
-      arrange(desc(Index))
-  }#close else if
-  else if (sex != 'All' && senior == 'All'){
-    telco %>%
-      mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-      filter(gender == sex) %>% 
-      group_by_at(var) %>%
-      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))%>%
-      arrange(desc(Index))
-  }#close else if
-  else{
-    telco %>%
-      mutate(Churn2=ifelse(Churn=='Yes',1,0)) %>%
-      filter(gender == sex, seniorcitz == senior) %>% 
-      group_by_at(var) %>%
-      summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=round(mean(Churn2)*100,2),Index=round(mean(Churn2)/0.2653699 * 100))%>%
-      arrange(desc(Index))
-  }
-}
-
+# 

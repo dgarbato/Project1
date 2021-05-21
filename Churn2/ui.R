@@ -22,45 +22,55 @@ ui <- dashboardPage(
               fluidRow(
                 column(width=6,offset=3,
                        
+                       h1(strong("Customer Churn Analysis")),
+                       
+                       h2(strong("Data Facts")),
+                       
                        h4("This data comes to you from Kaggle.  It has customer churn information about a fictitious telecommunications company
                        that provides phone and internet service."),
                        
                        h4("A customer who left within the last month is considered to have churnned."),
                        
-                       h4("There is customer tenure, payment information, information about various services and demographic information in the data."),
-                          
-                       h4("The objective of this analysis is to identify factors that drive churn."),
-                
-                       h4("If customers who are likely to churn are identified, marketers can take action to incentivize them in the form of speicial promotions etc.
-                          It is a lot more expensive to acquire new customers than it is to invest in retaining current ones.  Offering special deals to at risk 
-                          customers can improve customer retention."),
+                       h4("There is customer tenure (in months), payment information, information about various services and demographic information in the data."),
                        
-                       h4("It is a lot more expensive to acquire new customers than it is to invest in retaining current ones.  Offering special deals to at risk 
-                          customers can improve customer retention."),
-                          
+                       
+                       h2(strong("Objective: To identify factors driving customer churn.")),
+                       
+                       h3("Why it's important"),
+                
+                       h4("If customers who are likely to churn are identified, marketers can take action to incentivize them in the form of speicial promotions
+                       and improve customer retention."),
+                       
+                       h4("It is a lot more expensive to acquire new customers than it is to invest in retaining current ones."),
+                       
+                       h2(strong("Methodology")),
+                       
+                       h3("Numeric Variables"),
+                       
                        h4("The numeric variables were broken out into deciles for analysis."),
               
-                       h4("A decile is comprised of ten percentiles.  If a studen't test scores are in the 90th percentile, that means that they scored in the top 10%.  If would be equivalent to say that they 
-                          scored in the tenth decile.  As the values of a variable increase the decile value increases."),
+                       h4("A decile is comprised of ten percentiles. For example, if a studen't test scores are in the 90th percentile, that means that he/she scored in the top 10%.  
+                       If would be equivalent to say that his/her score is in the tenth decile as that also means the top ten percent"),
+                       
+                       h4("As the values of the numeric variable increase the decile values increase."),
                        
                        h4("The churn rate within each decile was calculated and indexed to the overall churn rate of 26.53% using the
                           following calculation:"   
                           ),
                        
-                       h4("     Index=(churn rate within each decile)/(overall churn rate) * 100"),
+                       h4(strong("Index=(churn rate within each decile)/(overall churn rate) * 100")),
+                       
+                       h3("Character Variables"),
                        
                        h4("For the categorical variables, each category was indexed  to the overall churn rate of 26.5% using the following
                           calculation:
                           "),
                        
-                       h4("     Index = (Churn Rate Per Category)/(Overall Churn Rate) * 100"),
+                       h4(strong("Index = (Churn Rate Per Category)/(Overall Churn Rate) * 100")),
                        
                        h4("Two drop down menus allow users to see if the relationship with churn varies by gender and senior citizen reapectively.")
                        
                        
-                       
-                       
-                         
                        )
                        
                        
@@ -71,16 +81,6 @@ ui <- dashboardPage(
                   
                 )
               ),
-                
-                
-              
-              
-              
-             
-              
-              
-                
-              
               
       
       tabItem(tabName="Tab1",
@@ -110,7 +110,8 @@ ui <- dashboardPage(
                        ),
               fluidRow(
                 column(width=4,offset=2, h4("34% of customers pay by electronic check.  These customers customers need to be encouraged to auto pay
-                                   by credit card or bank transfer. Customers who auto pay in other industries are also less likely to churn.")),
+                                   by credit card or bank transfer. In my professional experience analyzing churn data in another industry customers who 
+                                            auto pay are mush less likely to churn")),
                 box(plotOutput("PaymentMethod_tab_plot"),width=4,offset=2)
                        
                        ),
