@@ -14,5 +14,8 @@ Users can interact with this graph by seeing how things change by gender.  I hop
 That link is https://github.com/dgarbato/Project1
 
 My app can be viewed on  https://deniseg.shinyapps.io/Churn2/
+
+Data Source
+https://www.kaggle.com/blastchar/telco-customer-churn
  
   

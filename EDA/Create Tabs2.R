@@ -1,6 +1,6 @@
 telco=read_csv('WA_Fn-UseC_-Telco-Customer-Churn.csv')
 
-#############calculate overall churn rate and totla observations##################
+#############calculate overall churn rate and totla observations########################################
 telco%>%
   mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%                                          
   summarise(Churn_Rate=mean(Churn2),Observations=n())-> Overall_Churn_Rate
@@ -13,8 +13,8 @@ telco%>%
                              include.lowest= TRUE, labels= c(1:10)))%>%
   mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
   group_by(tenure.decile)%>%
-  summarise(min(tenure), max(tenure), Observations=n(),Churn_Rate=mean(Churn2),
-            Index=round(mean(Churn2)/0.2653699 * 100),
+  summarise(min(tenure), max(tenure), Observations=n(),Churn_Rate=round(mean(Churn2)*100,2),
+            Index=round(mean(Churn2)/0.2653699 * 100,0),
   )-> tenure_Tab
 ##############MonthlyCharges#########################################################################
 telco%>%
@@ -40,16 +40,19 @@ telco%>%
             Index=round(mean(Churn2)/0.2653699 * 100),
   )-> TotalCharges_Tab
 ###########################Internet Services##########################################################################
+#MODIFIED 5-9-21
 telco%>%
   mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
   group_by(InternetService)%>%
   summarise(Observations=n(), Churn_Rate=mean(Churn2),
-            Index=round(mean(Churn2)/0.2653699 * 100)
-  )->InternetService
+            Index=round(mean(Churn2)/0.2653699 * 100))%>%
+  mutate(Percent_Total=round((Observations/(nrow(telco)))*100))->InternetService
+  
+  
 #########################Character function and tabs###########################################################################################
 #how these factors seem to be impactiing churn
 
-char_tab = function(infile,var){
+old_char_tab = function(infile,var){
   infile%>%
     mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
     group_by_at(var)%>%
@@ -59,9 +62,30 @@ char_tab = function(infile,var){
   return(outfile)
 }
 
+# char_tab = function(infile,var){
+#   infile%>%
+#     mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
+#     group_by_at(var)%>%
+#     summarise(Observations=n(), Churn_Rate=mean(Churn2),
+#               Index=round(mean(Churn2)/0.2653699 * 100))%>%
+#     mutate(Percent_Total=round((Observations/(nrow(telco)))*100))->outfile
+#   
+#   return(outfile)
+# }
+
+char_tab = function(infile,var){
+  infile%>%
+    mutate(Churn2=ifelse(Churn=='Yes',1,0))%>%
+    group_by_at(var)%>%
+    summarise(Observations=n(),Percent_Total=round(n()/nrow(telco)*100,2), Churn_Rate=mean(Churn2),
+              Index=round(mean(Churn2)/0.2653699 * 100))->outfile
+    
+  return(outfile)
+}
 
 
-char_tab(telco,"InternetService",InternetService_Tab)#yes
+
+internet_service_tab=char_tab(telco,"InternetService")#yes
 Parnter_tab = char_tab(telco,"Partner")#yes
 #num_tab(telco,'MonthlyCharges')
 SeniorCitizen_tab=char_tab(telco,'SeniorCitizen')#yes
