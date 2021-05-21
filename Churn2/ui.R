@@ -20,28 +20,40 @@ ui <- dashboardPage(
       tabItem(tabName="Tab1",
               
               fluidRow(box(
-                plotOutput("tenure_tab_plot"),width=6,),
-                box(tableOutput("table_tenure"),width=6)
+                plotOutput("tenure_tab_plot"),width=4,offset=2,),
+                box(tableOutput("table_tenure"),width=5,offset=1)
                 ),
               
               fluidRow(box(
-                plotOutput("MonthlyCharges_tab_plot"),width=6),
-                box(tableOutput("table_MonthlyCharges"),width=6)
+                plotOutput("MonthlyCharges_tab_plot"),width=4,offset=2),
+                box(tableOutput("table_MonthlyCharges"),width=5,offset=1)
                 ),
               
-              fluidRow(box(plotOutput("TotalCharges_tab_plot"),width=6),
-                       box(tableOutput("table_TotalCharges"),width=6)
+              fluidRow(box(plotOutput("TotalCharges_tab_plot"),width=4,offset=2),
+                       box(tableOutput("table_TotalCharges"),width=5,offset=1)
                        
                        )
               ),
       tabItem(tabName="Tab2",
-              fluidRow(box(plotOutput("InternetService_tab_plot"),width=6)
+              fluidRow(
+                column(width=4,offset=2,
+                       h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special 
+                          promotions to reduce churn ")),
+                box(plotOutput("InternetService_tab_plot"),width=4,offset=2)
+                
+                       ),
+              fluidRow(
+                column(width=4,offset=2, h4("34% of customers pay by electronic check.  These customers customers need to be encouraged to auto pay
+                                   by credit card or bank transfer. Customers who auto pay in other industries are also less likely to churn.")),
+                box(plotOutput("PaymentMethod_tab_plot"),width=4,offset=2)
                        
                        ),
-              fluidRow(box(plotOutput("PaymentMethod_tab_plot"),width=6)
-                       
-                       ),
-              fluidRow(box(plotOutput("Contract_tab_plot"),width=6),
+              fluidRow(
+                column(width=4,offset=2, h4("55% of customers have a month-to-month contract.  These customers need to be offered better deals not only 
+                because they comprise such a large percentage of customers but also higher monthly charges are associated with higher churn rates.")),
+                
+                                   
+                box(plotOutput("Contract_tab_plot"),width=4,offset=2)
                        
                        )
               ),
