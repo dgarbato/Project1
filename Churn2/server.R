@@ -284,7 +284,8 @@ function(input, output) {
   output$InternetService_tab_plot <- renderPlot({
     
     ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Index)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black') + coord_flip()
+      ggtitle("Internet Service") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black') 
+    
     
     
     

@@ -55,10 +55,11 @@ ui <- dashboardPage(
                        h4("As the values of the numeric variable increase the decile values increase."),
                        
                        h4("The churn rate within each decile was calculated and indexed to the overall churn rate of 26.53% using the
-                          following calculation:"   
+                          following calculations:"   
                           ),
+                       h4(strong("Overall Churn Rate = (Number Of Churns)/(Total Number Of Customers)")),
                        
-                       h4(strong("Index=(churn rate within each decile)/(overall churn rate) * 100")),
+                       h4(strong("Index = (Churn Rate Within Each Decile)/(Overall Churn Rate) * 100")),
                        
                        h3("Character Variables"),
                        
