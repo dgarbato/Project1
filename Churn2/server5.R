@@ -291,16 +291,6 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$InternetService_tab_plot2 <- renderPlot({
-    
-    ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black') 
-    
-    
-   
-    
-  })# Close renderPlot internet service
-  
   
   
   # Next plot
@@ -320,13 +310,6 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$PaymentMethod_tab_plot2 <- renderPlot({
-    
-    ggplot(data = PaymentMethod_tab_reactive(), aes(x = PaymentMethod,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Payment Method") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-    
-  })# Close renderPlot
-  
   
   #Next plot
   output$Contract_tab_plot <- renderPlot({
@@ -336,26 +319,12 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$Contract_tab_plot2 <- renderPlot({
-    
-    ggplot(data = Contract_tab_reactive(), aes(x = Contract,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Contract") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-    
-  })# Close renderPlot
-  
   
   #Next plot
   output$MultipleLines_tab_plot <- renderPlot({
     
     ggplot(data = MultipleLines_tab_reactive(), aes(x = MultipleLines,y=Index)) + geom_col(fill='lightblue',color='black')  + 
       ggtitle("Multiple Lines") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-    
-  })# Close renderPlot
-  
-  output$MultipleLines_tab_plot2 <- renderPlot({
-    
-    ggplot(data = MultipleLines_tab_reactive(), aes(x = MultipleLines,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Multiple Lines") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
     
   })# Close renderPlot
   
@@ -369,13 +338,6 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$PhoneService_tab_plot2 <- renderPlot({
-
-    ggplot(data = PhoneService_tab_reactive(), aes(x = PhoneService,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  +
-      ggtitle("PhoneService") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-
-  })# Close renderPlot
-
 
   #Next plot
   # output$StreamingMovies_tab_plot <- renderPlot({

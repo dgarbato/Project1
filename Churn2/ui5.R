@@ -103,12 +103,10 @@ ui <- dashboardPage(
               ),
       tabItem(tabName="Tab2",
               fluidRow(
-                # column(width=4,offset=2,
-                #        h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special 
-                #           promotions to reduce churn ")),
-                box(plotOutput("InternetService_tab_plot"),width=4,offset=2),
-                box(plotOutput("InternetService_tab_plot2"),width=4,offset=2)
-                
+                column(width=4,offset=2,
+                       h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special 
+                          promotions to reduce churn ")),
+                box(plotOutput("InternetService_tab_plot"),width=4,offset=2)
                 
                        ),
               fluidRow(
