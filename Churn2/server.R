@@ -233,6 +233,34 @@ function(input, output) {
   }) # Close reactive 
   
   
+  #next reactive added 5/27/21################################
+  
+  telco_file_reactive <- reactive({
+    if (input$gender == 'All' && input$senior == 'All'){
+      telco
+      
+    } # close if
+    
+    else if (input$gender == 'All' && input$senior != 'All'){
+      filter(seniorcitz == input$senior) 
+      
+    } # close else if
+    
+    else if (input$gender != 'All' && input$senior == 'All'){
+      telco%>%
+        filter(gender == input$gender) 
+        
+    } # close else if
+    
+    else{
+      telco%>%
+        filter(gender == input$gender, seniorcitz == input$senior) 
+        
+    } # close else
+      
+    }) # Close reactive
+  
+  
   
   #function test
   #output$test <-renderTable({
@@ -291,16 +319,6 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$InternetService_tab_plot2 <- renderPlot({
-    
-    ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Percent_Total),vjust=1.5,colour='black') 
-    
-    
-   
-    
-  })# Close renderPlot internet service
-  
   
   
   # Next plot
@@ -320,12 +338,6 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$PaymentMethod_tab_plot2 <- renderPlot({
-    
-    ggplot(data = PaymentMethod_tab_reactive(), aes(x = PaymentMethod,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Payment Method") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-    
-  })# Close renderPlot
   
   
   #Next plot
@@ -336,12 +348,7 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$Contract_tab_plot2 <- renderPlot({
-    
-    ggplot(data = Contract_tab_reactive(), aes(x = Contract,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Contract") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-    
-  })# Close renderPlot
+ 
   
   
   #Next plot
@@ -352,15 +359,7 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$MultipleLines_tab_plot2 <- renderPlot({
-    
-    ggplot(data = MultipleLines_tab_reactive(), aes(x = MultipleLines,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Multiple Lines") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-    
-  })# Close renderPlot
-  
-  
-  
+
   #Next plot
   output$PhoneService_tab_plot <- renderPlot({
     
@@ -369,14 +368,7 @@ function(input, output) {
     
   })# Close renderPlot
   
-  output$PhoneService_tab_plot2 <- renderPlot({
-
-    ggplot(data = PhoneService_tab_reactive(), aes(x = PhoneService,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  +
-      ggtitle("PhoneService") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black')
-
-  })# Close renderPlot
-
-
+  
   #Next plot
   # output$StreamingMovies_tab_plot <- renderPlot({
   #   
@@ -384,6 +376,28 @@ function(input, output) {
   #     ggtitle("StreamingMovies") + xlab("") + ylab("Index to Overall Churn Rate") +geom_text(aes(label=Index),vjust=1.5,colour='black')
     
   # })# Close renderPlot
+  
+  g <- ggplot(data = mpg, aes(x = reorder(class, hwy,FUN=median), y = hwy))#reorders by median instead of mean (FUN=median)
+  g + geom_boxplot()
+  
+  ############################ Box Plots ######################################################################################
+  output$MonthlyCharges_InternetService_plot <- renderPlot({
+    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(InternetService, MonthlyCharges,FUN=median), y = MonthlyCharges))
+    
+  })
+  
+  output$MonthlyCharges_contract_plot <- renderPlot({
+    
+    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(Contract, MonthlyCharges,FUN=median), y = MonthlyCharges))
+    
+  } )
+  
+  output$MonthlyCharges_PaymentMethod_plot <- renderPlot({
+    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(PaymentMethod, MonthlyCharges,FUN=median), y = MonthlyCharges))
+    
+    
+  })
+  
   
   ############################ TABLES ######################################################################################
   #Numeric variable tables
