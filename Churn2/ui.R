@@ -41,7 +41,7 @@ ui <- dashboardPage(
                        h4("If customers who are likely to churn are identified, marketers can take action to incentivize them in the form of speicial promotions
                        and improve customer retention."),
                        
-                       h4("It is a lot more expensive to acquire new customers than it is to invest in retaining current ones."),
+                       h4("It is a lot more expensive for a company to acquire new customers than it is to invest in retaining current ones."),
                        
                        h2(strong("Methodology")),
                        
@@ -103,35 +103,38 @@ ui <- dashboardPage(
               ),
       tabItem(tabName="Tab2",
               fluidRow(
-                # column(width=4,offset=2,
-                #        h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special 
-                #           promotions to reduce churn ")),
                 box(plotOutput("InternetService_tab_plot"),width=4,offset=2),
-                box(plotOutput("InternetService_tab_plot2"),width=4,offset=2)
+                #box(plotOutput("InternetService_tab_plot2"),width=4,offset=2)
                 
+                column(width=4,offset=2,
+                       h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special
+                          promotions to reduce churn "))
+
                 
                        ),
               fluidRow(
+                box(plotOutput("PaymentMethod_tab_plot"),width=4,offset=2),
                 column(width=4,offset=2, h4("34% of customers pay by electronic check.  These customers customers need to be encouraged to auto pay
                                    by credit card or bank transfer. In my professional experience analyzing churn data in another industry customers who 
-                                            auto pay are mush less likely to churn")),
-                box(plotOutput("PaymentMethod_tab_plot"),width=4,offset=2)
+                                            auto pay are mush less likely to churn"))
+
                        
                        ),
               fluidRow(
+                box(plotOutput("Contract_tab_plot"),width=4,offset=2),
                 column(width=4,offset=2, h4("55% of customers have a month-to-month contract.  These customers need to be offered better deals not only 
-                because they comprise such a large percentage of customers but also higher monthly charges are associated with higher churn rates.")),
+                because they comprise such a large percentage of customers but also higher monthly charges are associated with higher churn rates."))
                 
                                    
-                box(plotOutput("Contract_tab_plot"),width=4,offset=2)
+
                        
                        )
               ),
       tabItem(tabName="Tab3",
-              fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=6,)
+              fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=4,offset=2,)
                        
                        ),
-              fluidRow(box(plotOutput("PhoneService_tab_plot"),width=6)
+              fluidRow(box(plotOutput("PhoneService_tab_plot"),width=4,offset=2)
                        )
               )
       

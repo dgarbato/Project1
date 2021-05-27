@@ -294,7 +294,7 @@ function(input, output) {
   output$InternetService_tab_plot2 <- renderPlot({
     
     ggplot(data = InternetService_tab_reactive(), aes(x = InternetService,y=Percent_Total)) + geom_col(fill='lightblue',color='black')  + 
-      ggtitle("Internet Service") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Index),vjust=1.5,colour='black') 
+      ggtitle("Internet Service") + xlab("") + ylab("Percent of Customers") +geom_text(aes(label=Percent_Total),vjust=1.5,colour='black') 
     
     
    
