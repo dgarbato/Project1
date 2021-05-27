@@ -6,6 +6,7 @@ ui <- dashboardPage(
       menuItem("Overview",tabName="Tab0"),
       menuItem("Numeric Factors",tabName="Tab1"),  #will add filtered churn rate to box
       menuItem("Important Categorical Factors",tabName="Tab2"),
+      menuItem("Box Plots of Monthly Charges",tabName = "Tab2a"),
       menuItem("Unimportant Categorical Factors",tabName="Tab3"),
       selectizeInput(inputId = "gender",
                      label = "Filter by Gender:",
@@ -129,6 +130,11 @@ ui <- dashboardPage(
 
                        
                        )
+              ),
+      tabItem(tabName = "Tab2a",
+              fluidRow(box(plotOutput("MonthlyCharges_InternetService_plot"))),
+              fluidRow(box(plotOutput("MonthlyCharges_contract_plot"))),
+              fluidRow(box(plotOutput("MonthlyCharges_PaymentMethod_plot")))
               ),
       tabItem(tabName="Tab3",
               fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=4,offset=2,)

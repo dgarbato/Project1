@@ -242,7 +242,8 @@ function(input, output) {
     } # close if
     
     else if (input$gender == 'All' && input$senior != 'All'){
-      filter(seniorcitz == input$senior) 
+      telco%>%
+        filter(seniorcitz == input$senior) 
       
     } # close else if
     
@@ -377,23 +378,24 @@ function(input, output) {
     
   # })# Close renderPlot
   
-  g <- ggplot(data = mpg, aes(x = reorder(class, hwy,FUN=median), y = hwy))#reorders by median instead of mean (FUN=median)
-  g + geom_boxplot()
-  
+ 
   ############################ Box Plots ######################################################################################
   output$MonthlyCharges_InternetService_plot <- renderPlot({
-    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(InternetService, MonthlyCharges,FUN=median), y = MonthlyCharges))
+    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(InternetService, MonthlyCharges,FUN=median), y = MonthlyCharges)) +
+      ggtitle("Distributions Of Monthly Charges By Internet Service") + xlab("") + ylab("Monthly Charges") 
     
   })
   
   output$MonthlyCharges_contract_plot <- renderPlot({
     
-    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(Contract, MonthlyCharges,FUN=median), y = MonthlyCharges))
+    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(Contract, MonthlyCharges,FUN=median), y = MonthlyCharges)) +
+      ggtitle("Distributions Of Monthly Charges By Contract") + xlab("") + ylab("Monthly Charges")
     
   } )
   
   output$MonthlyCharges_PaymentMethod_plot <- renderPlot({
-    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(PaymentMethod, MonthlyCharges,FUN=median), y = MonthlyCharges))
+    ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(PaymentMethod, MonthlyCharges,FUN=median), y = MonthlyCharges)) +
+      ggtitle("Distributions Of Monthly Charges By Payment Method") + xlab("") + ylab("Monthly Charges")
     
     
   })
