@@ -382,20 +382,20 @@ function(input, output) {
   ############################ Box Plots ######################################################################################
   output$MonthlyCharges_InternetService_plot <- renderPlot({
     ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(InternetService, MonthlyCharges,FUN=median), y = MonthlyCharges)) +
-      ggtitle("Distributions Of Monthly Charges By Internet Service") + xlab("") + ylab("Monthly Charges") 
+      ggtitle("Distribution Of Monthly Charges By Internet Service") + xlab("") + ylab("Monthly Charges") 
     
   })
   
   output$MonthlyCharges_contract_plot <- renderPlot({
     
     ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(Contract, MonthlyCharges,FUN=median), y = MonthlyCharges)) +
-      ggtitle("Distributions Of Monthly Charges By Contract") + xlab("") + ylab("Monthly Charges")
+      ggtitle("Distribution Of Monthly Charges By Contract") + xlab("") + ylab("Monthly Charges")
     
   } )
   
   output$MonthlyCharges_PaymentMethod_plot <- renderPlot({
     ggplot(data=telco_file_reactive()) + geom_boxplot(aes(x = reorder(PaymentMethod, MonthlyCharges,FUN=median), y = MonthlyCharges)) +
-      ggtitle("Distributions Of Monthly Charges By Payment Method") + xlab("") + ylab("Monthly Charges")
+      ggtitle("Distribution Of Monthly Charges By Payment Method") + xlab("") + ylab("Monthly Charges")
     
     
   })

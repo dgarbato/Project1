@@ -64,7 +64,7 @@ ui <- dashboardPage(
                        
                        h3("Character Variables"),
                        
-                       h4("For the categorical variables, each category was indexed  to the overall churn rate of 26.5% using the following
+                       h4("For the categorical variables, each category was indexed  to the overall churn rate of 26.53% using the following
                           calculation:
                           "),
                        
@@ -117,7 +117,7 @@ ui <- dashboardPage(
                 box(plotOutput("PaymentMethod_tab_plot"),width=4,offset=2),
                 column(width=4,offset=2, h4("34% of customers pay by electronic check.  These customers customers need to be encouraged to auto pay
                                    by credit card or bank transfer. In my professional experience analyzing churn data in another industry customers who 
-                                            auto pay are mush less likely to churn"))
+                                            auto pay are much less likely to churn"))
 
                        
                        ),
