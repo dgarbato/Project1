@@ -79,7 +79,8 @@ function(input, output) {
         group_by(TotalCharges.decile) %>%
         summarise(Minimum=min(TotalCharges,na.rm=TRUE), Maximum=max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
-        )
+        )%>%slice_head(n=10)
+        
     } # Close if
     
     else if (input$gender == 'All' && input$senior != 'All'){
@@ -93,7 +94,7 @@ function(input, output) {
         group_by(TotalCharges.decile) %>%
         summarise(Minimum=min(TotalCharges), Maximum=max(TotalCharges), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
-        )
+        )%>%slice_head(n=10)
     } # Close else if
     
     else if (input$gender != 'All' && input$senior == 'All'){
@@ -107,7 +108,7 @@ function(input, output) {
         group_by(TotalCharges.decile) %>%
         summarise(Minimum=min(TotalCharges,na.rm=TRUE ), Maximum=max(TotalCharges,na.rm=TRUE), Observations=n(),Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
-        )
+        )%>%slice_head(n=10)
     } # Close else if
     
     else{
@@ -121,7 +122,7 @@ function(input, output) {
         group_by(TotalCharges.decile) %>%
         summarise(Minimum=min(TotalCharges,na.rm=TRUE), Maximum=max(TotalCharges,na.rm=TRUE), Observations=n(), Churn_Rate=round(mean(Churn2)*100,2),
                   Index=round(mean(Churn2)/0.2653699 * 100)
-        )
+        )%>%slice_head(n=10)
     } # Close else
     
   }) # Close reactive

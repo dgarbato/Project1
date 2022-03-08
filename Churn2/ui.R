@@ -4,10 +4,11 @@ ui <- dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Overview",tabName="Tab0"),
-      menuItem("Numeric Factors",tabName="Tab1"),  #will add filtered churn rate to box
+      menuItem("Numeric Factors",tabName="Tab1"),  
       menuItem("Important Categorical Factors",tabName="Tab2"),
-      menuItem("Box Plots of Monthly Charges",tabName = "Tab2a"),
+      menuItem("Box Plots Of Monthly Charges",tabName = "Tab2a"),
       menuItem("Unimportant Categorical Factors",tabName="Tab3"),
+      menuItem("Conclustion And Future Work",tabName = "Tab4"),
       selectizeInput(inputId = "gender",
                      label = "Filter by Gender:",
                      choices = c("All", unique(telco[, 'gender'])$gender)),
@@ -27,10 +28,10 @@ ui <- dashboardPage(
                        
                        h2(strong("Data Facts")),
                        
-                       h4("This data comes to you from Kaggle.  It has customer churn information about a fictitious telecommunications company
-                       that provides phone and internet service."),
+                       h4("This data is from Kaggle.  It has customer churn information about a fictitious telecommunications company called Telco
+                       that provides phone, internet service, streaming movies, streaming TV and online security.  There are 7,043 customers."),
                        
-                       h4("A customer who left within the last month is considered to have churnned."),
+                       h4("A customer who left within the last month is considered to have churned."),
                        
                        h4("There is customer tenure (in months), payment information, information about various services and demographic information in the data."),
                        
@@ -42,7 +43,7 @@ ui <- dashboardPage(
                        h4("If customers who are likely to churn are identified, marketers can take action to incentivize them in the form of speicial promotions
                        and improve customer retention."),
                        
-                       h4("It is a lot more expensive for a company to acquire new customers than it is to invest in retaining current ones."),
+                       h4("It is a lot more expensive to acquire new customers than it is to invest in retaining current ones."),
                        
                        h2(strong("Methodology")),
                        
@@ -55,7 +56,7 @@ ui <- dashboardPage(
                        
                        h4("As the values of the numeric variable increase the decile values increase."),
                        
-                       h4("The churn rate within each decile was calculated and indexed to the overall churn rate of 26.53% using the
+                       h4("The churn rate within each decile was calculated and indexed to the overall churn rate of 27% using the
                           following calculations:"   
                           ),
                        h4(strong("Overall Churn Rate = (Number Of Churns)/(Total Number Of Customers)")),
@@ -64,11 +65,13 @@ ui <- dashboardPage(
                        
                        h3("Character Variables"),
                        
-                       h4("For the categorical variables, each category was indexed  to the overall churn rate of 26.53% using the following
+                       h4("For the categorical variables, each category was indexed  to the overall churn rate of 27% using the following
                           calculation:
                           "),
                        
                        h4(strong("Index = (Churn Rate Per Category)/(Overall Churn Rate) * 100")),
+                       
+                       h4(em("Note: when the index of the Churn Rate Per Category is equivalent to the Overall Churn Rate the index = 100")),
                        
                        h4("Two drop down menus allow users to see if the relationship with churn varies by gender and senior citizen reapectively.")
                        
@@ -104,45 +107,98 @@ ui <- dashboardPage(
               ),
       tabItem(tabName="Tab2",
               fluidRow(
-                box(plotOutput("InternetService_tab_plot"),width=4,offset=2),
-                #box(plotOutput("InternetService_tab_plot2"),width=4,offset=2)
                 
-                column(width=4,offset=2,
-                       h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special
-                          promotions to reduce churn "))
-
+                box(width=4,offset=2,plotOutput("InternetService_tab_plot")),
+                  
+                box(width=4,offset=2,
+                       h4("44% of customers have fiber optic internet service.  These customers need to be incentivized through special 
+                          promotions to reduce churn. "))
+                
                 
                        ),
               fluidRow(
                 box(plotOutput("PaymentMethod_tab_plot"),width=4,offset=2),
-                column(width=4,offset=2, h4("34% of customers pay by electronic check.  These customers customers need to be encouraged to auto pay
+                box(width=4,offset=2, h4("34% of customers pay by electronic check.  These customers customers need to be encouraged to auto pay
                                    by credit card or bank transfer. In my professional experience analyzing churn data in another industry customers who 
-                                            auto pay are much less likely to churn"))
-
+                                            auto pay are much less likely to churn.")),
+                
                        
                        ),
               fluidRow(
                 box(plotOutput("Contract_tab_plot"),width=4,offset=2),
-                column(width=4,offset=2, h4("55% of customers have a month-to-month contract.  These customers need to be offered better deals not only 
-                because they comprise such a large percentage of customers but also higher monthly charges are associated with higher churn rates."))
+                box(width=4,offset=2, h4("55% of customers have a month-to-month contract.  These customers need to be offered better deals not only 
+                because they comprise such a large percentage of customers but also higher monthly charges are associated with higher churn rates.")),
                 
                                    
-
+                
                        
                        )
               ),
+      
       tabItem(tabName = "Tab2a",
               fluidRow(box(plotOutput("MonthlyCharges_InternetService_plot"))),
               fluidRow(box(plotOutput("MonthlyCharges_contract_plot"))),
               fluidRow(box(plotOutput("MonthlyCharges_PaymentMethod_plot")))
-              ),
+      ),
+      
+      
       tabItem(tabName="Tab3",
-              fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=4,offset=2,)
+              fluidRow(box(plotOutput("MultipleLines_tab_plot"),width=4,offset=2)
                        
                        ),
               fluidRow(box(plotOutput("PhoneService_tab_plot"),width=4,offset=2)
                        )
+              ),
+      tabItem(tabName = "Tab4",
+              fluidRow(
+                column(width=6,
+                       offset=3,
+                       h1(strong("Conclusions")),
+                       h4(" "),
+                       h3(strong("Numeric Factors")),
+                       
+                      
+                       h4("The newest customers are more likely to churn given the strong negative linear relationship between customer tenure
+                          and churn. As customer tenure increases, the churn rate goes down "),
+                       h4("Monthly has a positive relationship with churn.  Higher monthly charges are associated with higher churn rates "),
+                       h4("Churn trends downward as total charges increase."),
+                       h4(" "),
+                       h3(strong("Categorical Factors" )),
+                       h4("Fiber optic internet service, month-to-month contracts and payment by electronic check all have high churn rates."),
+                       h4("Boxplots revealed a relationship between monthly charges and each of the above factors"  ),
+                       h4("Fiber Optic internet service has much higher monthly charges than the other types of service"),
+                       h4("Month-to-month contracts have higher montly charges and less spread than other contract types."),
+                       h4(""),
+                       
+                       h3(strong("Next Steps")),
+                       h4("Add drop down menus for all demographic categories."),
+                       h4("")
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       )
+
               )
+              
+              
+        
+      )
       
     ))
 )
